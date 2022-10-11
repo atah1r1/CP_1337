@@ -10,7 +10,7 @@ export default function Leaderboard() {
     const getData = async () => {
         await axios({
             method: 'get',
-            url: '/api/leaderboard',
+            url: process.env.NODE_ENV === 'developement' ? '/api/leaderboard' : 'https://cp-ruddy.vercel.app/api/leaderboard',
         }).then((res) => {
             console.log(res.data);
             setLeaderboard(res.data.data);
