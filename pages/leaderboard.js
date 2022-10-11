@@ -36,7 +36,7 @@ export default function Leaderboard() {
                             <p>Rank</p>
                         </div>
                         <div className={styles.scroll}>
-                            {leaderboard.map((team, i) => {
+                            {leaderboard.sort((a, b) => a.rank - b.rank).map((team, i) => {
                                 return (
                                     <div className={styles.leaderboard} key={i}>
                                         <img src={`https://avatars.dicebear.com/api/bottts/${team.name}.svg`} width='70px'></img>
