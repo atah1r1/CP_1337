@@ -69,7 +69,7 @@ export default function Home() {
               <li> A prize will be given to the winners (three first teams)</li>
             </ul>
             <div styles={{fontSize: '20px'}}>How to register an account on codeforces.com and create teams</div>
-            <YouTube videoId="YSlxD2TsG7k" opts={opts} className={cn("text-center mt-5", styles.youtube_video)} />
+            <YouTube videoId="YK7dFgV9KEY" opts={opts} className={cn("text-center mt-5", styles.youtube_video)} />
             <form className={cn("input-group input-group-lg", styles.form_container)} onSubmit={sendData}>
               <div className={cn('row', styles.input_group_class)}>
                 <div className='col-lg-4'>
