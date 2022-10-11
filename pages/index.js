@@ -62,8 +62,8 @@ export default function Home() {
             </p>
             <h2 className={styles.how_to_play}>How to play:</h2>
             <ul className={styles.list}>
-              <li> Register your account to <a href='https://codeforces.com/register' target='_blank' rel="noreferrer">codeforces.com</a></li>
-              <li> The teams are selected randomly</li>
+              <li> Make sure you have an account in <a href='https://codeforces.com/register' target='_blank' rel="noreferrer">codeforces.com</a></li>
+              <li> Learn How to use codeforces (Create team, submit sulotion,...)</li>
               <li> The teams will be given problems to solve</li>
               <li> The team with the most points wins</li>
               <li> A prize will be given to the winners (three first teams)</li>
