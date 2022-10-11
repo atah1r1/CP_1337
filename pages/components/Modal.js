@@ -10,7 +10,7 @@ export default function Modal({ ModalButtonRef }) {
                         </div>
                         <div className="modal-body" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <img src="/female.png" width="300px"></img>
-                            <p style={{fontSize: '25px'}} className="text-center">You will receive an email with the details of the competition and the tean members</p>
+                            <p style={{fontSize: '25px'}} className="text-center">Thank you for your registration to the contest (reminder: the teams will be selected randomly) Thanks</p>
                         </div>
                     </div>
                 </div>
