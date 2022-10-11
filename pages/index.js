@@ -30,7 +30,7 @@ export default function Home() {
     e.preventDefault();
     await axios({
       method: 'post',
-      url: process.env.NODE_ENV === 'development' ? '/api/users' : 'https://cp-ruddy.vercel.app/api/users',
+      url: process.env.NODE_ENV === 'development' ? '/api/users' : 'http://selem3lalcode.tech/api/users',
       headers:
       {
         "Content-Type": "application/json",
