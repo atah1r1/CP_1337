@@ -8,7 +8,7 @@ export default function GetUsers() {
     const getData = async () => {
         await axios({
             method: 'get',
-            url: process.env.NODE_ENV === 'development' ? '/api/users' : 'https://selem3lalcode.tech/api/leaderboard',
+            url: process.env.NODE_ENV === 'development' ? '/api/users' : 'https://selem3lalcode.tech/api/users',
         }).then((res) => {
             console.log(res.data);
             setUsers(res.data.data);
