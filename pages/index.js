@@ -12,6 +12,8 @@ export default function Home() {
 
   const ModalButtonRef = useRef(null);
 
+  const [loading, setLoading] = useState(false);
+
   const opts = {
     height: '364',
     width: '640',
@@ -28,6 +30,7 @@ export default function Home() {
 
   const sendData = async (e) => {
     e.preventDefault();
+    setLoading(true);
     await axios({
       method: 'post',
       url: process.env.NODE_ENV === 'development' ? '/api/users' : 'https://selem3lalcode.tech/api/users',
@@ -39,7 +42,11 @@ export default function Home() {
     }).then((res) => {
       console.log(res.data);
       ModalButtonRef.current.click();
-    }).catch((err) => { console.log(err) });
+      setLoading(false);
+    }).catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
   }
 
   return (
@@ -78,7 +85,9 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.register_btn}>
-                <button className='btn btn-primary' type='submit'>Register</button>
+                <button className='btn btn-primary' type='submit'>{loading ? <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div> : 'Register'}</button>
               </div>
             </form>
           </div>
