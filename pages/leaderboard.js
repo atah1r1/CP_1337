@@ -10,7 +10,7 @@ export default function Leaderboard() {
     const getData = async () => {
         await axios({
             method: 'get',
-            url: process.env.NODE_ENV === 'development' ? '/api/leaderboard' : 'http://selem3lalcode.tech/api/leaderboard',
+            url: process.env.NODE_ENV === 'development' ? '/api/leaderboard' : 'https://selem3lalcode.tech/api/leaderboard',
         }).then((res) => {
             console.log(res.data);
             setLeaderboard(res.data.data);
