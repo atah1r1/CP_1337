@@ -1,110 +1,61 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 import cn from 'classnames';
-import YouTube from 'react-youtube';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Modal from './components/Modal';
 
+export default function Leaderboard() {
 
-export default function Home() {
+    const [leaderboard, setLeaderboard] = useState([]);
 
-  const ModalButtonRef = useRef(null);
+    const getData = async () => {
+        await axios({
+            method: 'get',
+            url: process.env.NODE_ENV === 'development' ? '/api/leaderboard' : 'https://selem3lalcode.tech/api/leaderboard',
+        }).then((res) => {
+            console.log(res.data);
+            setLeaderboard(res.data.data);
+        }).catch((err) => { console.log(err) });
+    }
 
-  const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        getData();
+    }, [])
 
-  const opts = {
-    height: '364',
-    width: '640',
-    playerVars: {
-      autoplay: 1,
-    },
-  };
-
-  const [data, setData] = useState({
-    login: '',
-    email: '',
-    phone_number: '',
-  });
-
-  const sendData = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    await axios({
-      method: 'post',
-      url: process.env.NODE_ENV === 'development' ? '/api/users' : 'https://selem3lalcode.tech/api/users',
-      headers:
-      {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify(data)
-    }).then((res) => {
-      console.log(res.data);
-      ModalButtonRef.current.click();
-      setLoading(false);
-    }).catch((err) => {
-      console.log(err);
-      setLoading(false);
-    });
-  }
-
-  return (
-    <div className={cn('row', styles.all_container)}>
-      <div className={cn('col-lg-6', styles.left_container)}>
-        <div className={cn("container w-100", styles.our_container)}>
-          <div className={styles.logo_container}>
-            <img src='/logo 2.png' className={styles.image}></img>
-          </div>
-          <div className={styles.title_container}>
-            <h1 className={cn(styles.quote)} >Everyone in this country should learn how to program because it teaches you how to think.</h1>
-            <p className={styles.paragraph}>A competitive programming is a kind of mental sport, wherein you (or your team) use your programming skills to write code for some really interesting and difficult problems, and in the process try to win a particular competition.
-            </p>
-            <h2 className={styles.how_to_play}>How to play:</h2>
-            <ul className={styles.list}>
-              <li> Make sure you have an account in <a href='https://codeforces.com/register' target='_blank' rel="noreferrer">codeforces.com</a></li>
-              <li> Learn How to use codeforces (Create team, submit your solution ,...)</li>
-              <li> The teams will be given problems to solve</li>
-              <li> The team with the most points wins</li>
-              <li> A prize will be given to the winners (three first teams)</li>
-              <li> <a href='https://codeforces.com/contestInvitation/bafbeec3dc7a5f01d8d7a110318150b4091107fd' target='_blank' rel="noreferrer">Contest link</a></li> 
-
-            </ul>
-            <div styles={{fontSize: '20px'}}>How to register an account on codeforces.com and create teams</div>
-            <YouTube videoId="YK7dFgV9KEY" opts={opts} className={cn("text-center mt-5", styles.youtube_video)} />
-            {/* <form className={cn("input-group input-group-lg", styles.form_container)} onSubmit={sendData}>
-              <div className={cn('row', styles.input_group_class)}>
-                <div className='col-lg-4'>
-                  <span>Login *</span>
-                  <input value={data.login} onChange={(e) => setData({ ...data, login: e.target.value })} type="text" className="form-control" placeholder='Enter your login' required></input>
+    return (
+        <div className={cn('row', styles.all_container)}>
+            <div className={cn('col-lg-6', styles.left_container)}>
+                <div className={cn("container w-100", styles.our_container)}>
+                    <div className={styles.logo_container}>
+                        <img src='/logo 2.png' className={styles.image}></img>
+                    </div>
+                    <div className={styles.leaderboard_container}>
+                        <h1 className={styles.leaderboard_title}>Leaderboard</h1>
+                        <div className={styles.leaderboard_table}>
+                            <p>Avatar</p>
+                            <p>Team name</p>
+                            <p>Rank</p>
+                        </div>
+                        <div className={styles.scroll}>
+                            {leaderboard.sort((a, b) =>   a.rank - b.rank ).map((team, i) => {
+                                return (
+                                    <div className={styles.leaderboard} key={i}>
+                                        <img src={`https://avatars.dicebear.com/api/bottts/${team.name}.svg`} width='70px'></img>
+                                        <p>{team.name}</p>
+                                        <p>{team.rank}</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <footer className={styles.footer}>
+                        <img src='/footer.svg'></img>
+                    </footer>
                 </div>
-                <div className='col-lg-4'>
-                  <span>Email *</span>
-                  <input value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} type="email" className="form-control" placeholder='Enter your email' required></input>
-                </div>
-                <div className='col-lg-4'>
-                  <span>Phone number *</span>
-                  <input value={data.phone_number} onChange={(e) => setData({ ...data, phone_number: e.target.value })} type="text" maxLength='10' className="form-control" placeholder='Enter your phone number' required></input>
-                </div>
-              </div>
-              <div className={styles.register_btn}>
-                <button className='btn btn-primary' type='submit'>{loading ? <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div> : 'Register'}</button>
-              </div>
-            </form> */}
-          </div>
-          <footer className={styles.footer}>
-            <img src='/footer.svg'></img>
 
-          </footer>
+            </div>
+            <div className={cn('col-lg-6', styles.background)}>
+
+            </div>
         </div>
-
-      </div >
-      <div className={cn('col-lg-6', styles.background)}>
-
-      </div>
-      <Modal ModalButtonRef={ModalButtonRef} />
-    </div >
-  )
+    )
 }
