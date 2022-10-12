@@ -28,6 +28,7 @@ export default function GetUsers() {
                         <th scope="col">Login</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone Number</th>
+                        <th scope="col">Team</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@ export default function GetUsers() {
                                 <td>{user.login}</td>
                                 <td>{user.email}</td>
                                 <td>{user.phone_number}</td>
+                                <td>null</td>
                             </tr>
                         )
                     })}
