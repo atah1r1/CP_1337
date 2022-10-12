@@ -67,7 +67,7 @@ export default function Home() {
               <li> The teams will be given problems to solve</li>
               <li> The team with the most points wins</li>
               <li> A prize will be given to the winners (three first teams)</li>
-              <li>  </li>
+              <li> <a href='https://codeforces.com/contestInvitation/bafbeec3dc7a5f01d8d7a110318150b4091107fd' target='_blank' rel="noreferrer">Contest link</a></li> 
 
             </ul>
             <div styles={{fontSize: '20px'}}>How to register an account on codeforces.com and create teams</div>
