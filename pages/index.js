@@ -30,6 +30,7 @@ export default function Leaderboard() {
                     </div>
                     <div className={styles.leaderboard_container}>
                         <h1 className={styles.leaderboard_title}>Leaderboard</h1>
+                        <h2>Congratulations, You are all winners</h2>
                         <div className={styles.leaderboard_table}>
                             <p>Avatar</p>
                             <p>Team name</p>
