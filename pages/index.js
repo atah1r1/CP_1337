@@ -72,7 +72,7 @@ export default function Home() {
             </ul>
             <div styles={{fontSize: '20px'}}>How to register an account on codeforces.com and create teams</div>
             <YouTube videoId="YK7dFgV9KEY" opts={opts} className={cn("text-center mt-5", styles.youtube_video)} />
-            <form className={cn("input-group input-group-lg", styles.form_container)} onSubmit={sendData}>
+            {/* <form className={cn("input-group input-group-lg", styles.form_container)} onSubmit={sendData}>
               <div className={cn('row', styles.input_group_class)}>
                 <div className='col-lg-4'>
                   <span>Login *</span>
@@ -92,7 +92,7 @@ export default function Home() {
                   <span class="visually-hidden">Loading...</span>
                 </div> : 'Register'}</button>
               </div>
-            </form>
+            </form> */}
           </div>
           <footer className={styles.footer}>
             <img src='/footer.svg'></img>
