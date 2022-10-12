@@ -39,7 +39,7 @@ export default function GetUsers() {
                                 <td>{user.login}</td>
                                 <td>{user.email}</td>
                                 <td>{user.phone_number}</td>
-                                <td>null</td>
+                                <td></td>
                             </tr>
                         )
                     })}
